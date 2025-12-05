@@ -1,0 +1,103 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tic • Tac • Toe — Play with Friends</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app" id="app">
+      <script src="script.js" defer></script>
+
+      <header class="topbar">
+        <div class="brand">
+          <img
+            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><rect width='48' height='48' rx='8' fill='%23f0d000'/><text x='50%' y='55%' font-size='26' font-family='Montserrat' font-weight='800' text-anchor='middle' fill='%230f0f0f'>T</text></svg>"
+            alt="logo"
+            class="logo"
+          />
+          <div>
+            <h1>Tic • Tac • Toe</h1>
+            <p class="sub">Play with friends — local & responsive</p>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="score" aria-live="polite">
+            <div><strong id="scoreX">0</strong><small>×</small></div>
+            <div class="score-sep">—</div>
+            <div><strong id="scoreO">0</strong><small>○</small></div>
+          </div>
+          <button id="newBtn" class="btn">New Game</button>
+          <button id="resetBtn" class="btn btn-ghost">Reset Scores</button>
+        </div>
+      </header>
+
+      <section class="game-area">
+        <div class="panel">
+          <div class="status" id="status">
+            Player <span id="turn">X</span>'s turn
+          </div>
+
+          <div
+            class="board"
+            id="board"
+            role="grid"
+            aria-label="Tic Tac Toe board"
+            tabindex="0"
+          >
+            <!-- 9 cells inserted by JS -->
+          </div>
+
+          <div class="actions">
+            <div class="btn-group">
+              <label class="switch">
+                <input type="checkbox" id="vibrateToggle" /><span>Haptics</span>
+              </label>
+              <label class="switch small">
+                <input type="checkbox" id="soundToggle" checked /><span
+                  >Sound</span
+                >
+              </label>
+              <label class="switch small">
+                <input type="checkbox" id="highlightToggle" checked /><span
+                  >Highlight Win</span
+                >
+              </label>
+            </div>
+
+            <div class="quick">
+              <button class="btn" id="undoBtn" disabled>Undo</button>
+              <button class="btn btn-primary" id="shareBtn">Copy Invite</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel info">
+          <h2>How to play</h2>
+          <ol>
+            <li>Tap a cell to place your mark (X starts).</li>
+            <li>Win by connecting 3 in a row.</li>
+            <li>Use keyboard arrows + Enter to play with keyboard.</li>
+          </ol>
+
+          <div class="tips">
+            <h3>Tips</h3>
+            <p>
+              Mobile-first design, large touch targets, animated feedback,
+              stored scores (local).
+            </p>
+          </div>
+
+          <footer class="attribution">
+            Made with ❤️ — Play with friends on one device
+          </footer>
+        </aside>
+      </section>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

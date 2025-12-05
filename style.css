@@ -1,0 +1,256 @@
+:root {
+  --bg: #0f1012;
+  --card: #0f1720;
+  --muted: rgba(255, 255, 255, 0.6);
+  --accent: #f0d000;
+  --glass: rgba(255, 255, 255, 0.04);
+  --success: #00d28a;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#app {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #071018 0%, #0f1720 100%);
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.app {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 18px;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  flex: 0 0 48px;
+}
+.brand h1 {
+  font-size: 1.15rem;
+  margin: 0;
+}
+.brand .sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-weight: 600;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), #ffd85a);
+  color: #0b0b0b;
+  border: none;
+}
+.btn-ghost {
+  opacity: 0.75;
+}
+.score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+.score div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.score small {
+  font-weight: 600;
+  color: var(--muted);
+}
+.game-area {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  margin-top: 18px;
+}
+.panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(2, 6, 23, 0.6);
+}
+.status {
+  font-size: 1rem;
+  padding: 6px 0;
+  color: var(--muted);
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 18px;
+  max-width: 520px;
+}
+.cell {
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--glass);
+  font-size: 2.2rem;
+  font-weight: 900;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.cell:focus {
+  outline: 3px solid rgba(240, 208, 0, 0.12);
+  transform: translateY(-4px);
+}
+.cell:hover {
+  transform: translateY(-6px);
+}
+.cell.x {
+  color: linear-gradient(90deg, #fff, #eee);
+}
+.cell.o {
+  color: #fff;
+}
+.win {
+  background: linear-gradient(
+    90deg,
+    rgba(240, 208, 0, 0.12),
+    rgba(0, 210, 138, 0.06)
+  );
+  box-shadow: 0 8px 30px rgba(240, 208, 0, 0.06);
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.switch input {
+  width: 18px;
+  height: 18px;
+}
+.info ol {
+  padding-left: 18px;
+}
+.info h2 {
+  margin-top: 0;
+}
+.attribution {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.tips {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.quick {
+  display: flex;
+  gap: 10px;
+}
+.undo-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+/* responsive */
+@media (max-width: 900px) {
+  .game-area {
+    grid-template-columns: 1fr;
+  }
+  .board {
+    max-width: 100%;
+    gap: 10px;
+  }
+  .brand h1 {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .app {
+    padding: 12px;
+    margin: 8px;
+  }
+  .cell {
+    font-size: 1.6rem;
+  }
+  .controls {
+    gap: 8px;
+  }
+}
+
+/* subtle entrance */
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.panel,
+.brand,
+.controls,
+.board {
+  animation: pop-in 0.35s ease both;
+}
+
+/* accessibility */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* small helper */
+.small {
+  font-size: 0.85rem;
+}
